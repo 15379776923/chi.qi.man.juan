@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>红色精神传承 - 赓续红色血脉</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none; 
+        }
+        
+        body {
+            font-family: "宋体", "微软雅黑", sans-serif;
+            background-color: #fdfcf8;
+            color: #333;
+            line-height: 1.7;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            color: #c41e3a;
+            display: inline-block;
+            padding-bottom: 1px;
+            border-bottom: 3px solid #c41e3a;
+        }
+        
+        .section-title p {
+            margin-top: 15px;
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            color: #666;
+        }
+        .hero {
+            height: 60vh;
+            min-height: 300px;
+            background: linear-gradient(rgba(194, 5, 37, 0.7), rgba(142, 52, 67, 0.5)), url("红色历史背景.jpg") center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* 新增装饰元素 */
+        .hero::before, .hero::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='white'%3E%3Cpath d='M10,10 L90,10 L90,90 L10,90 Z M20,20 L80,20 L80,80 L20,80 Z' fill='none' stroke='currentColor' stroke-width='2' opacity='0.1'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-size: contain;
+            z-index: 1;
+        }
+        .hero::before {
+            top: 50px;
+            left: 50px;
+            transform: rotate(15deg);
+        }
+        .hero::after {
+            bottom: 50px;
+            right: 50px;
+            transform: rotate(-15deg);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+        
+        .hero h1 {
+            font-family: "楷体", serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            line-height: 1.2;
+            position: relative;
+        }
+        
+        .hero h1::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background-color: white;
+            margin: 20px auto 0;
+            border-radius: 3px;
+        }
+        
+        .hero p {
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            max-width: 800px;
+            margin: 0 auto 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* 新增副标题装饰 */
+        .hero-tag {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 1rem;
+            margin-top: 10px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .hero .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
+            40% {transform: translateY(-20px) translateX(-50%);}
+            60% {transform: translateY(-10px) translateX(-50%);}
+        }
+        
+        .spirit-section {
+            background-color: #f9f5f0;
+        }
+        
+        .spirit-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+        
+        .spirit-item {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .spirit-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .spirit-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .spirit-img {
+            flex: 0 0 180px;
+            height: 200px;
+        }
+        
+        .spirit-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .spirit-content {
+            flex: 1;
+            padding: 20px;
+        }
+        
+        .spirit-content h3 {
+            color: #c41e3a;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .spirit-content h3 span {
+            font-size: 0.8rem;
+            background-color: #f0e6d6;
+            color: #8c2323;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-left: 10px;
+        }
+        
+        .spirit-content p {
+            color: #555;
+            font-size: 1rem;
+        }
+        
+        .practice-section {
+            background-color: rgb(255, 254, 254);
+        }
+        
+        .practice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .practice-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .practice-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .practice-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .practice-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .practice-card:hover .practice-img img {
+            transform: scale(1.05);
+        }
+        
+        .practice-content {
+            padding: 30px;
+        }
+        
+        .practice-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #e6f0ff; 
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .practice-icon svg path,
+        .practice-icon svg circle,
+        .practice-icon svg line {
+            stroke: #07296c; 
+        }
+        
+        .practice-content h3 {
+            color: #970303e9; 
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .practice-content p {
+            color: #7e0404; 
+            font-size: 0.95rem;
+        }
+        
+        .practice-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(246, 227, 226, 0.898);
+            color: rgb(10, 0, 0);
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .practice-card:hover .practice-overlay {
+            opacity: 1;
+        }
+        
+        /* 传承行动区样式 */
+        .action-section {
+            background-color: #f0e6d6;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .action-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #c41e3a, #e63946, #c41e3a);
+        }
+        
+        .action-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .action-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .action-content h3 {
+            font-size: 1.6rem;
+            color: #8c2323;
+            margin-bottom: 30px;
+        }
+        
+        .action-steps {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+        }
+        
+        .action-step {
+            display: flex;
+            margin-bottom: 25px;
+        }
+        
+        .step-number {
+            flex: 0 0 40px;
+            height: 40px;
+            background-color: #c41e3a;
+            color: white;
+            border-radius: 70%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        
+        .step-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .step-content p {
+            color: #555;
+            font-size: 0.95rem;
+        }
+        
+        .action-btn {
+            display: inline-block;
+            background-color: #c41e3a;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 8px rgba(196, 30, 58, 0.3);
+        }
+        
+        .action-btn:hover {
+            background-color: #9e1a2d;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(196, 30, 58, 0.4);
+        }
+        
+        .action-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .action-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background-color: #2c2c2c;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col {
+            flex: 3;
+            min-width: 200px;
+        }
+        
+        .footer-col h3 {
+            font-family: "楷体", serif;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #f0c0c0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #1e1d1d;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 1.0rem;
+            color: #aaa;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .spirit-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero::before, .hero::after {
+                width: 150px;
+                height: 150px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            section {
+                padding: 40px 0;
+            }
+            
+            .spirit-item,
+            .spirit-item:nth-child(even) {
+                flex-direction: column;
+            }
+            
+            .spirit-img {
+                flex: 0 0 200px;
+                width: 100%;
+            }
+            
+            .action-container {
+                flex-direction: column;
+            }
+            
+            .hero::before, .hero::after {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .practice-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-content">
+            <h1>赓续红色血脉<br>传承精神火种</h1>
+            <p>从历史中汲取力量，在新时代践行初心，让红色精神代代相传</p>
+            <div class="hero-tag">传承红色基因 · 弘扬时代精神</div>
+        </div>
+        <div class="scroll-indicator">
+            <svg width="24" height="40" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 0V36M12 36L5 29M12 36L19 29" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </header>
+    <section class="spirit-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>红色精神的核心密码</h2>
+                <p>跨越时空的精神谱系，指引我们前行的方向</p>
+            </div>
+            
+            <div class="spirit-grid">
+                <div class="spirit-item">
+                    <div class="spirit-img">
+                        <img src="井冈山.jpg" alt="井冈山精神">
+                    </div>
+                    <div class="spirit-content">
+                        <h3><a href="https://baike.sogou.com/v484877.htm?fromTitle=%E4%BA%95%E5%86%88%E5%B1%B1%E7%B2%BE%E7%A5%9E" target="_blank" rel="noopener noreferrer">井冈山精神</a> <span>1927-1930</span></h3>
+                        <p>坚定信念、艰苦奋斗、实事求是、敢闯新路、依靠群众、勇于胜利。在艰苦卓绝的环境中，中国共产党人开辟了农村包围城市、武装夺取政权的革命道路。</p>
+                    </div>
+                </div>
+                
+                <!-- 长征精神 -->
+                <div class="spirit-item">
+                    <div class="spirit-img">
+                        <img src="长征.jpg" alt="长征精神">
+                    </div>
+                    <div class="spirit-content">
+                        <h3><a href="https://baike.sogou.com/v484871.htm?fromTitle=%E9%95%BF%E5%BE%81%E7%B2%BE%E7%A5%9E">长征精神</a> <span>1934-1936</span></h3>
+                        <p>把全国人民和中华民族的根本利益看得高于一切，坚定革命的理想和信念，坚信正义事业必然胜利的精神；为了救国救民，不怕任何艰难险阻，不惜付出一切牺牲的精神。</p>
+                    </div>
+                </div>
+                
+                <!-- 延安精神 -->
+                <div class="spirit-item">
+                    <div class="spirit-img">
+                        <img src="延安.jpg" alt="延安精神">
+                    </div>
+                    <div class="spirit-content">
+                        <h3><a href="https://baike.sogou.com/v484869.htm?fromTitle=%E5%BB%B6%E5%AE%89%E7%B2%BE%E7%A5%9E">延安精神</a> <span>1935-1948</span></h3>
+                        <p>坚定正确的政治方向，解放思想、实事求是的思想路线，全心全意为人民服务的根本宗旨，自力更生、艰苦奋斗的创业精神。是中国革命精神的结晶。</p>
+                    </div>
+                </div>
+                
+                <!-- 西柏坡精神 -->
+                <div class="spirit-item">
+                    <div class="spirit-img">
+                        <img src="西柏坡.jpg" alt="西柏坡精神">
+                    </div>
+                    <div class="spirit-content">
+                        <h3><a href="https://baike.sogou.com/v7737537.htm?fromTitle=%E8%A5%BF%E6%9F%8F%E5%9D%A1%E7%B2%BE%E7%A5%9E">西柏坡精神</a> <span>1948-1949</span></h3>
+                        <p>谦虚谨慎、不骄不躁的作风；艰苦奋斗的作风；敢于斗争、敢于胜利的精神；依靠群众、团结统一的精神。是中国革命胜利前夕的精神旗帜。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="practice-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>精神传承在当代</h2>
+                <p>红色基因在新时代的生动实践，激励着一代又一代人</p>
+            </div>
+            <div class="practice-grid">
+                <!-- 脱贫攻坚 -->
+                <div class="practice-card">
+                    <div class="practice-img">
+                        <img src="脱贫攻坚.jpg" alt="脱贫攻坚">
+                    </div>
+                    <div class="practice-content">
+                        
+                        <h3>脱贫攻坚</h3>
+                        <p>传承艰苦奋斗精神，数百万扶贫干部扎根基层，带领群众脱贫致富</p>
+                    </div>
+                    <div class="practice-overlay">
+                        <h3>脱贫攻坚中的红色传承</h3>
+                        <p>在脱贫攻坚战中，广大扶贫干部秉承"为人民服务"的宗旨，发扬艰苦奋斗、攻坚克难的革命精神，走遍千山万水，说尽千言万语，想尽千方百计，吃尽千辛万苦，终于实现全面脱贫，创造了人类减贫史上的奇迹。</p>
+                    </div>
+                </div>
+                
+                <!-- 科技创新 -->
+                <div class="practice-card">
+                    <div class="practice-img">
+                        <img src="科技创新.jpg" alt="科技创新">
+                    </div>
+                    <div class="practice-content">
+                        
+                        <h3>科技创新</h3>
+                        <p>弘扬自力更生精神，科研工作者勇攀高峰，实现重大技术突破</p>
+                    </div>
+                    <div class="practice-overlay">
+                        <h3>科技创新中的红色传承</h3>
+                        <p>从"两弹一星"到"嫦娥探月"，从"蛟龙号"到"天眼FAST"，中国科技工作者传承自力更生、艰苦奋斗的红色精神，在艰苦条件下创造了一个又一个科技奇迹，彰显了中华民族敢为人先、勇攀高峰的创新精神。</p>
+                    </div>
+                </div>
+                
+                <!-- 抗疫斗争 -->
+                <div class="practice-card">
+                    <div class="practice-img">
+                        <img src="抗疫斗争.jpg" alt="抗疫斗争">
+                    </div>
+                    <div class="practice-content">
+                        
+                        <h3>抗疫斗争</h3>
+                        <p>践行众志成城精神，白衣战士逆行出征，全国人民共克时艰</p>
+                    </div>
+                    <div class="practice-overlay">
+                        <h3>抗疫斗争中的红色传承</h3>
+                        <p>面对突如其来的疫情，中国人民展现出强大的凝聚力和向心力。医护人员冲锋在前，社区工作者坚守岗位，志愿者无私奉献，全国人民团结一心，生动诠释了"一方有难、八方支援"的互助精神和担当精神。</p>
+                    </div>
+                </div>
+                
+                <!-- 戍边卫国 -->
+                <div class="practice-card">
+                    <div class="practice-img">
+                        <img src="戍边卫国.jpg" alt="戍边卫国">
+                    </div>
+                    <div class="practice-content">
+                        
+                        <h3>戍边卫国</h3>
+                        <p>延续不怕牺牲精神，边防战士扎根边疆，守护国家领土完整</p>
+                    </div>
+                    <div class="practice-overlay">
+                        <h3>戍边卫国中的红色传承</h3>
+                        <p>"宁肯高原埋忠骨，绝不丢失一寸土"。边防战士们继承和发扬革命先烈的爱国主义精神和牺牲精神，在极其艰苦的条件下坚守岗位，用生命和热血捍卫国家领土主权，展现了新时代军人的使命担当。</p>
+                    </div>
+                </div>
+                
+                <!-- 乡村振兴 -->
+                <div class="practice-card">
+                    <div class="practice-img">
+                        <img src="乡村振兴.jpg" alt="乡村振兴">
+                    </div>
+                    <div class="practice-content">
+                        
+                        <h3>乡村振兴</h3>
+                        <p>秉承为民服务精神，新时代建设者扎根乡村，推动城乡协调发展</p>
+                    </div>
+                    <div class="practice-overlay">
+                        <h3>乡村振兴中的红色传承</h3>
+                        <p>新时代的乡村振兴工作者传承"从群众中来，到群众中去"的工作方法，深入农村一线，了解农民需求，带领群众发展特色产业，改善人居环境，推动乡村全面振兴，让广大农民过上更加美好的生活。</p>
+                    </div>
+                </div>
+                
+                <!-- 志愿服务 -->
+                <div class="practice-card">
+                    <div class="practice-img">
+                        <img src="志愿服务.jpg" alt="志愿服务">
+                    </div>
+                    <div class="practice-content">
+                        
+                        <h3>志愿服务</h3>
+                        <p>弘扬无私奉献精神，志愿者们默默付出，传递社会温暖与大爱</p>
+                    </div>
+                    <div class="practice-overlay">
+                        <h3>志愿服务中的红色传承</h3>
+                        <p>从雷锋精神到当代志愿服务，无私奉献的红色基因一直在传承。无数志愿者活跃在社区服务、大型赛事、应急救援等各个领域，用实际行动诠释着"奉献、友爱、互助、进步"的志愿精神，让社会充满温暖与正能量。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 传承行动倡议区 -->
+    <section class="action-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>我们如何传承？</h2>
+                <p>红色精神的传承，始于足下，见于行动</p>
+            </div>
+            
+            <div class="action-container">
+                <div class="action-content">
+                    <h3>让红色精神融入日常生活</h3>
+                    
+                    <div class="action-steps">
+                        <div class="action-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>学习红色历史</h4>
+                                <p>阅读红色经典书籍，观看历史纪录片，参观革命纪念馆，了解革命先辈的奋斗历程和精神境界。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="action-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>践行红色精神</h4>
+                                <p>在工作中精益求精，在生活中乐于助人，在困难面前勇于担当，将红色精神转化为实际行动。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="action-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>传播红色故事</h4>
+                                <p>向身边的人讲述革命故事，通过社交媒体分享红色文化，让更多人了解和传承红色精神。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="action-btn">加入红色传承行动</a>
+                </div>
+                
+                <div class="action-image">
+                    <img src="传承接力.jpg" alt="红色精神传承接力">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+           <div class="copyright">
+                <p>© 2025 红色记忆-精神传承 - 铭记历史，传承精神，开创未来</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const practiceCards = document.querySelectorAll('.practice-card');
+        practiceCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const overlay = this.querySelector('.practice-overlay');
+                overlay.style.opacity = overlay.style.opacity === '1' ? '0' : '1';
+            });
+        });
+    </script>
+</body>
+</html>

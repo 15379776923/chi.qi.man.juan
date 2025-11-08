@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>红色记忆-建设楷模</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #f8f5e6;
+            background-image: url("红色背景图9.jpg");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+        
+        p {
+            text-indent: 2em;
+            margin-bottom: 1em;
+        }
+        
+        img {
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            display: block;
+        }
+        
+        img:hover {
+            cursor: pointer;
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部横幅样式 */
+        .aaa {
+            width: 100%;
+            position: relative;
+            margin-bottom: 30px;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        
+        .aaa img {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: cover;
+        }
+        
+        .aaa-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: #fff;
+            font-family: "微软雅黑", sans-serif;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        .aaa-text b {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            line-height: 1.4;
+        }
+        
+        /* 内容区块通用样式 */
+        .person-section {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .person-image {
+            flex: 0 0 300px;
+            margin: 0 auto 20px;
+        }
+        
+        .person-image img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+        
+        .person-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 0 20px;
+        }
+        
+        .person-text h3 {
+            color: #c41e3a;
+            margin-bottom: 15px;
+            font-size: clamp(1.3rem, 2vw, 1.6rem);
+            border-bottom: 2px solid #c41e3a;
+            padding-bottom: 5px;
+        }
+        
+        .person-text p {
+            font-size: clamp(1rem, 1.5vw, 1.1rem);
+            font-family: "楷体", serif;
+            color: #333;
+        }
+        
+        /* 调整不同方向排列 */
+        .left-image .person-image {
+            order: 1;
+        }
+        
+        .left-image .person-text {
+            order: 2;
+        }
+        
+        .right-image .person-image {
+            order: 2;
+        }
+        
+        .right-image .person-text {
+            order: 1;
+        }
+        
+        /* 底部链接 */
+        .more-link {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .more-link a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #c41e3a;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+        
+        .more-link a:hover {
+            background-color: #9e1a2d;
+        }
+        
+        /* 页脚 */
+        .footer {
+            width: 100%;
+            height: 70px;
+            background-color: #333;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        
+        .footer p {
+            text-indent: 0;
+            margin: 0;
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .person-section {
+                flex-direction: column;
+            }
+            
+            .right-image .person-image,
+            .right-image .person-text {
+                order: 1;
+            }
+            
+            .person-image {
+                flex: 0 0 250px;
+            }
+            
+            .person-image img {
+                height: 250px;
+            }
+            
+            .person-text {
+                padding: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="aaa">
+            <img src="红色历史20.jpg" alt="红色历史背景">
+            <div class="aaa-text">
+                <b>平凡岗位绽放非凡光芒,<br>点滴奉献汇聚时代伟力,<br>他们是民族的脊梁，是时代的先锋，在共和国的史册上镌刻下不朽的功勋。</b>
+            </div>
+        </div>
+        
+        <!-- 杨靖宇 -->
+        <div class="person-section left-image">
+            <div class="person-image bbb">
+                <img src="杨靖宇.jpg" alt="杨靖宇">
+            </div>
+            <div class="person-text bbb-text">
+                <h3>杨靖宇（1905-1940）</h3>
+                <p>原名马尚德，河南确山人，无产阶级革命家、军事家，东北抗日联军创建者和领导者之一。1927年加入中国共产党，后赴东北领导抗日武装斗争，组建东北抗日联军第一路军并任总司令兼政委，在吉林、辽宁一带开展游击战，沉重打击日伪军。1940年初，部队遭日伪军包围，战士失散后，他孤身与日寇周旋数昼夜，弹尽粮绝仍坚守阵地。2月23日，在濛江县壮烈牺牲，年仅35岁。日军发现其胃中只有草根、树皮和棉絮，彰显了他不屈的民族气节。</p>
+            </div>
+        </div>
+        
+        <!-- 李大钊 -->
+        <div class="person-section right-image">
+            <div class="person-image ccc">
+                <img src="李大钊.jpg" alt="李大钊">
+            </div>
+            <div class="person-text ccc-text">
+                <h3>李大钊（1889-1927）</h3>
+                <p>字守常，河北乐亭人，中国共产主义运动先驱、伟大的马克思主义者、中国共产党主要创始人之一。他早年留学日本，接触马克思主义，1918年起发表《庶民的胜利》等文章，热情歌颂十月革命，系统传播马克思主义，为中国共产党的成立奠定思想基础。1920年与陈独秀等人分别在南方和北方筹备建党，是党的主要创始人之一。他领导北方工人运动和反帝反封建斗争，1927年4月28日被军阀张作霖逮捕杀害,年仅38岁，用生命践行了对革命的忠诚。</p>
+            </div>
+        </div>
+        
+        <!-- 刘胡兰 -->
+        <div class="person-section left-image">
+            <div class="person-image ddd">
+                <img src="刘胡兰.jpg" alt="刘胡兰">
+            </div>
+            <div class="person-text ddd-text">
+                <h3>刘胡兰（1932-1947）</h3>
+                <p>原名刘富兰，山西文水人，革命先烈、优秀共产党员。1942年参加抗日儿童团，1945年参与妇女工作，1946年成为中共候补党员，时年14岁。她积极投身革命，传达党的指示、组织群众护粮，配合武工队打击敌人。1947年1月12日，因叛徒出卖被捕，面对敌人铡杀群众的威胁，坚称“怕死不当共产党”，从容就义，年仅15岁。毛泽东为其题词“生的伟大，死的光荣”，她是中华民族精神的象征，入选“100位为新中国成立作出突出贡献的英雄模范人物”。</p>
+            </div>
+        </div>
+        
+        <!-- 赵一曼 -->
+        <div class="person-section right-image">
+            <div class="person-image eee">
+                <img src="赵一曼.jpg" alt="赵一曼">
+            </div>
+            <div class="person-text eee-text">
+                <h3>赵一曼（1905-1936）</h3>
+                <p>原名李坤泰，四川宜宾人，中共党员、抗日英雄。早年受进步思想影响，1923年入团，1926年入党，曾就读武汉分校、莫斯科中山大学。“九一八”事变后赴东北，任满洲总工会组织部长等职，1933年领导哈尔滨电车工人大罢工。1934年到珠河，兼任东北人民革命军第三军某团政委，带队开展游击战争，建反日组织，鼓舞民众抗日。1935年11月作战负伤被俘，遭日军酷刑仍坚贞不屈。1936年8月2日于珠河就义。她同时投身女权斗争，推动妇女解放，是抗日与妇女解放事业的杰出代表。</p>
+            </div>
+        </div>
+        
+        <!-- 陈树湘 -->
+        <div class="person-section left-image">
+            <div class="person-image fff">
+                <img src="陈树湘.jpg" alt="陈树湘">
+            </div>
+            <div class="person-text fff-text">
+                <h3>陈树湘（1905—1934）</h3>
+                <p>湖南长沙人，中国共产党党员、红军师长，革命烈士。他出身贫苦，早年结识毛泽东等人走上革命路，1925年入党，参与南昌起义、秋收起义等，历经中央苏区反“围剿”。1934年任红三十四师师长，长征中率部担任全军总后卫，掩护主力抢渡湘江。12月突围时腹部中弹，被俘后拒降，在押送途中撕开伤口绞断肠子牺牲，年仅29岁。他用生命践行忠诚，后建有纪念园等设施缅怀其事迹。</p>
+            </div>
+        </div>
+        
+        <div class="more-link hhh">
+            点击了解更多 
+            <a href="https://www.12371.cn/special/sflrw/" target="_blank">共产党员共产党员网</a>
+        </div>
+    </div>
+    
+    <div class="footer ggg">
+        <p>© 2025 红色记忆-建设楷模 - 铭记历史，传承精神，开创未来</p>
+    </div>
+</body>
+</html>
