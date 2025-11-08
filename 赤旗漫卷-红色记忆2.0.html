@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>赤旗漫卷-红色记忆</title>
+    <script>
+        setInterval(changeImage, 5000);
+        var imageArray = ["南湖嘉兴红船.png", "井冈山会师.png", "红军长征.png", "日本投降.png", "开国大典.png"];
+        var currentIndex = 0;
+        
+        function changeImage() {
+            var imgElement = document.getElementById("imgs");
+            // 淡入淡出过渡效果
+            imgElement.style.opacity = 0;
+            
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % imageArray.length;
+                imgElement.src = imageArray[currentIndex];
+                imgElement.style.opacity = 1;
+            }, 300);
+        }
+
+        // 页面加载完成后初始化
+        window.onload = function() {
+            // 给轮播图添加初始透明度
+            document.getElementById("imgs").style.opacity = 1;
+           
+            const currentPage = window.location.pathname.split("/").pop();
+            document.querySelectorAll(".q a").forEach(link => {
+                if (link.getAttribute("href") === currentPage || (currentPage === "" && link.textContent.includes("首页"))) {
+                    link.classList.add("active");
+                }
+            });
+        };
+    </script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: url("红色背景图8(1).jpg");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: "思源宋体", "SimSun", serif;
+            line-height: 1.6;
+            color: #333;
+            padding-bottom: 60px;
+        }
+
+        p {
+            text-indent: 2em;
+            margin-bottom: 12px;
+        }
+
+        img {
+            transition: all 0.5s ease;
+            max-width: 100%;
+            height: auto;
+            border: none;
+        }
+
+        img:hover {
+            cursor: pointer;
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+        }
+
+        /* 头部标题样式 */
+        .first {
+            width: 95%;
+            max-width: 1200px;
+            margin: 20px auto;
+            font-size: 130%;
+            padding: 15px 0;
+            color: #8B0000;
+            text-align: center;
+        }
+
+        .first h2 {
+            font-size: clamp(20px, 5vw, 32px);
+            font-weight: bold;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            letter-spacing: 2px;
+        }
+
+        /* 轮播图区域 - 与下方内容保持相同宽度 */
+        .start {
+            width: 100%;
+            margin: 0 auto; /* 移除左右内边距，确保与内容区对齐 */
+        }
+
+        .main {
+            width: 95%; /* 与下方content-wrapper保持一致 */
+            max-width: 1200px; /* 与下方content-wrapper保持一致 */
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+        }
+
+        .main img {
+            width: 100%; /* 图片宽度填满容器 */
+            max-height: 500px;
+            border-radius: 8px;
+            opacity: 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 导航栏样式 */
+        .q {
+            width: 95%;
+            max-width: 1200px;
+            margin: 25px auto;
+            padding: 8px 0px;
+            background: linear-gradient(90deg, #C1121F, #9D2933);
+            line-height: 45px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .q a {
+            text-decoration: none;
+            color: #FFF8DC;
+            padding: 0 15px;
+            margin: 0 5px;
+            font-size: clamp(14px, 3vw, 22px);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .q a:hover, .q a.active {
+            color: #FFD700;
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* 内容容器样式 - 与轮播图保持相同宽度 */
+        .content-wrapper {
+            width: 95%; /* 与轮播图容器保持一致 */
+            max-width: 1200px; /* 与轮播图容器保持一致 */
+            margin: 30px auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .content-wrapper {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* 图片卡片样式 */
+        .card {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            background-color: #fff;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .item-mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .item-title {
+            position: absolute;
+            bottom: 60px;
+            left: 20px;
+            color: #fff;
+            font-size: clamp(16px, 4vw, 23px);
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.5s ease;
+            z-index: 2;
+        }
+
+        .item-introduction {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            color: #f8f8f8;
+            font-size: clamp(12px, 3vw, 15px);
+            line-height: 1.5;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.5s ease 0.1s;
+            z-index: 2;
+        }
+
+        .card:hover .item-mask {
+            opacity: 1;
+        }
+
+        .card:hover .item-title,
+        .card:hover .item-introduction {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* 文字内容样式 */
+        .text-content {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .text-content h4 {
+            color: #8B0000;
+            font-size: clamp(16px, 4vw, 20px);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #DC143C;
+        }
+
+        /* 页脚样式 */
+        .footer {
+            width: 100%;
+            background-color: rgba(139, 0, 0, 0.9);
+            color: #f8f8f8;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: #FFE4B5;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: clamp(12px, 3vw, 14px);
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #FFD700;
+            text-decoration: underline;
+        }
+
+        .footer p {
+            text-indent: 0;
+            font-size: clamp(12px, 3vw, 14px);
+            opacity: 0.9;
+        }
+
+        /* 修复国徽卡片文字颜色 */
+        .card:nth-child(2) .item-title {
+            color: #FFE4B5;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 767px) {
+            .q a {
+                padding: 0 10px;
+                margin: 5px 0;
+            }
+
+            .card img {
+                height: 220px;
+            }
+
+            .first {
+                margin: 15px auto;
+            }
+
+            .text-content {
+                padding: 15px;
+            }
+        }
+
+        /* 加载动画 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .first, .main, .q, .content-wrapper, .footer {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .main { animation-delay: 0.2s; opacity: 0; }
+        .q { animation-delay: 0.4s; opacity: 0; }
+        .content-wrapper { animation-delay: 0.6s; opacity: 0; }
+        .footer { animation-delay: 0.8s; opacity: 0; }
+    </style>
+</head>
+<body>
+    <div class="first">
+        <h1>赤旗漫卷——那些照亮征程的红色记忆</h1>
+    </div>
+
+    <div class="start">
+        <div class="main">
+            <img src="红色历史14.jpg" id="imgs" alt="红色历史轮播图" />
+        </div>
+    </div>
+
+    <div class="q">
+        <a href="index.html">⭐首页</a>
+        <a href="历史事件3.0.html">⭐历史事件</a>
+        <a href="建设楷模2.0.html">⭐建设楷模</a>
+        <a href="精神传承.html">⭐精神传承</a>
+    </div>
+
+    <div class="content-wrapper">
+        <!-- 国旗卡片 -->
+        <div class="card">
+            <img src="中华人民共和国国旗.jpg" alt="中华人民共和国国旗" />
+            <div class="item-mask"></div>
+            <div class="item-title">中华人民共和国国旗</div>
+            <div class="item-introduction">
+                《中华人民共和国国旗法》对国旗的升挂、使用等做出了明确规定，如北京天安门广场、新华门等场所应当每日升挂国旗，学校除假期外每周举行一次升旗仪式等。
+            </div>
+        </div>
+
+        <!-- 国旗文字内容 -->
+        <div class="text-content">
+            <h4>设计内涵</h4>
+            <p>旗面红色：象征革命，是无数革命先烈的鲜血染红的</p>
+            <p>五颗黄色的五角星：象征中国共产党领导下的革命人民大团结</p>
+            <p>四颗小五角星：寓意全国各族人民紧紧围绕在党的周围</p>
+            
+            <h4>历史沿革</h4>
+            <p>1949年9月27日，全国政协第一届全体会议通过决议，选定曾联松设计的五星红旗为中华人民共和国国旗</p>
+            <p>次日，主席团公布《国旗制法说明》</p>
+            <p>10月1日，中华人民共和国第一面国旗在天安门广场升起</p>
+        </div>
+
+        <!-- 国徽卡片 -->
+        <div class="card">
+            <img src="中华人民共和国国徽.jpg" alt="中华人民共和国国徽" />
+            <div class="item-mask"></div>
+            <div class="item-title">中华人民共和国国徽</div>
+            <div class="item-introduction">
+                《中华人民共和国国徽法》对国徽的悬挂、使用等做出了明确规定，国徽应当悬挂在各级人民代表大会常务委员会、各级人民政府、中央军事委员会等场所。
+            </div>
+        </div>
+
+        <!-- 国徽文字内容 -->
+        <div class="text-content">
+            <h4>设计内涵</h4>
+            <p>五星照耀：象征中国共产党领导下的人民大团结</p>
+            <p>天安门：代表民族精神与革命传统</p>
+            <p>齿轮麦穗：体现工农联盟的阶级基础</p>
+            <p>红金配色：红色象征革命，金色寓意光明</p>
+            
+            <h4>历史沿革</h4>
+            <p>1950年9月20日中央人民政府委员会第八次会议通过</p>
+            <p>1991年3月2日《国徽法》正式颁布实施</p>
+            <p>2020年列入《中华人民共和国宪法第一百四十二条》</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="http://www.gov.cn" target="_blank">中国政府网</a> |
+                <a href="http://cpc.people.com.cn" target="_blank">人民网 中国共产党新闻网</a> |
+                <a href="http://www.mva.gov.cn" target="_blank">退役军人事务部</a> |
+                <a href="http://www.ncha.gov.cn" target="_blank">国家文物局红色遗产</a>
+            </div>
+            <footer>
+                <p>© 2025 赤旗漫卷-红色记忆 - 铭记历史，传承精神，开创未来</p>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
